@@ -44,7 +44,6 @@ class NavigationRouter extends Component {
               key="single"
               db={this.props.db}
               component={SingleFundNameListContainer}
-              hideNavBar
             />
           </Scene>
         </Router>

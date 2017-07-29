@@ -11,16 +11,13 @@ const SingleFundRow = props => {
     <ListItem
       title={name}
       subtitle={currencyFormatter.format(value, { code: 'USD' })}
-      onPress={() => {
-        Actions.single({ filter: name })
-      }}
     />
   )
 }
 
-const keyExtractor = item => item.name
+const keyExtractor = item => item.fid
 
-const FundNameList = props => {
+const SingleFundNameList = props => {
   const { results } = props
 
   return (
@@ -32,4 +29,4 @@ const FundNameList = props => {
   )
 }
 
-export default FundNameList
+export default SingleFundNameList
