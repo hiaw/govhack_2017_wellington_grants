@@ -18,7 +18,9 @@ const SingleFundRow = props => {
   )
 }
 
-const keyExtractor = item => item.fid
+const keyExtractor = item => {
+  return `single_fund_${item.fid}_${item.name}_${Math.random()}`
+}
 
 const SingleFundNameList = props => {
   const { results } = props
