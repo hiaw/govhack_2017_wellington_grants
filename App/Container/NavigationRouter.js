@@ -6,6 +6,7 @@ import SQLite from 'react-native-sqlite-storage'
 
 import SingleFundNameListContainer from './SingleFundNameListContainer.js'
 import FundNameListContainer from './FundNameListContainer.js'
+import SingleProjectContainer from './SingleProjectContainer.js'
 
 class NavigationRouter extends Component {
   componentWillMount() {
@@ -44,6 +45,11 @@ class NavigationRouter extends Component {
               key="single"
               db={this.props.db}
               component={SingleFundNameListContainer}
+            />
+            <Scene
+              key="singleProject"
+              db={this.props.db}
+              component={SingleProjectContainer}
             />
           </Scene>
         </Router>

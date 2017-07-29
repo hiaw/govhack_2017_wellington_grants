@@ -10,10 +10,9 @@ const sql_single_funding_total =
 
 class SingleFundNameListComponent extends Component {
   componentDidMount() {
-    console.log(this.props)
     this.props.db.executeSql(
       sql_single_funding_total,
-      [this.props.filter],
+      [this.props.title],
       results => {
         const data = []
         var len = results.rows.length

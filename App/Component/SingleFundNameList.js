@@ -11,6 +11,9 @@ const SingleFundRow = props => {
     <ListItem
       title={name}
       subtitle={currencyFormatter.format(value, { code: 'USD' })}
+      onPress={() => {
+        Actions.singleProject({ title: name })
+      }}
     />
   )
 }

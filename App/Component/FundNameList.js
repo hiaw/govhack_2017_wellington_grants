@@ -12,7 +12,7 @@ const SingleFundRow = props => {
       title={name}
       subtitle={currencyFormatter.format(value, { code: 'USD' })}
       onPress={() => {
-        Actions.single({ filter: name })
+        Actions.single({ title: name })
       }}
     />
   )
