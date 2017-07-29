@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ListItem } from 'react-native-elements'
 import { FlatList, Text, View } from 'react-native'
+import { Actions } from 'react-native-router-flux'
 
 import currencyFormatter from 'currency-formatter'
 
@@ -10,6 +11,9 @@ const SingleFundRow = props => {
     <ListItem
       title={name}
       subtitle={currencyFormatter.format(value, { code: 'USD' })}
+      onPress={() => {
+        Actions.single()
+      }}
     />
   )
 }
