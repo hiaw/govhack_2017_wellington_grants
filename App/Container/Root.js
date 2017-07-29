@@ -1,30 +1,43 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react'
-import { AppRegistry, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+import { compose, withState } from 'recompose'
+import SQLite from 'react-native-sqlite-storage'
 
-export default class wellington_grant extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+import FundNameListContainer from './FundNameListContainer.js'
+
+class RootComponent extends Component {
+  componentWillMount() {
+    this.openDB()
+  }
+
+  // DB related
+  successCB() {
+    console.log('DB opened: ')
+  }
+
+  errorCB(err) {
+    console.log('SQL Error: ' + err)
+  }
+
+  openDB() {
+    this.props.setDB(
+      SQLite.openDatabase(
+        { name: 'wellington2.db', createFromLocation: 1 },
+        this.successCB,
+        this.errorCB,
+      ),
     )
   }
+
+  render() {
+    if (this.props.db) {
+      return <FundNameListContainer db={this.props.db} />
+    }
+    return null
+  }
 }
+
+const Root = compose(withState('db', 'setDB', null))(RootComponent)
 
 const styles = StyleSheet.create({
   container: {
@@ -45,4 +58,4 @@ const styles = StyleSheet.create({
   },
 })
 
-AppRegistry.registerComponent('wellington_grant', () => wellington_grant)
+export default Root
