@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { compose, withState } from 'recompose'
 import { View } from 'react-native'
+import { ListItem, Divider } from 'react-native-elements'
 import SQLite from 'react-native-sqlite-storage'
+import { Actions } from 'react-native-router-flux'
 
 import FundNameList from '../Component/FundNameList.js'
 
@@ -32,7 +34,14 @@ class FundNameListComponent extends Component {
 
   render() {
     return (
-      <View style={{ paddingTop: 20 }}>
+      <View>
+        <ListItem
+          title="Statistics"
+          onPress={() => {
+            Actions.stats()
+          }}
+        />
+        <Divider style={{ backgroundColor: 'blue' }} />
         <FundNameList results={this.props.result} />
       </View>
     )
