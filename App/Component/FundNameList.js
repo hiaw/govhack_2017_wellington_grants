@@ -1,21 +1,31 @@
 import React, { Component } from 'react'
 import { ListItem } from 'react-native-elements'
 import { FlatList, Text, View } from 'react-native'
-import SQLite from 'react-native-sqlite-storage'
 
-const sql_funding_total =
-  'select Funding_Pool_Name, sum(Granted_Total_Amount) from WCC_Grant_Funding_By_Fund group by Funding_Pool_Name'
+import currencyFormatter from 'currency-formatter'
 
 const SingleFundRow = props => {
   const { name, value } = props.item
-  console.log(props)
-  return <ListItem title={`${name} - ${value}`} />
+  return (
+    <ListItem
+      title={name}
+      subtitle={currencyFormatter.format(value, { code: 'USD' })}
+    />
+  )
 }
+
+const keyExtractor = item => item.name
 
 const FundNameList = props => {
   const { results } = props
 
-  return <FlatList data={results} renderItem={SingleFundRow} />
+  return (
+    <FlatList
+      keyExtractor={keyExtractor}
+      data={results}
+      renderItem={SingleFundRow}
+    />
+  )
 }
 
 export default FundNameList

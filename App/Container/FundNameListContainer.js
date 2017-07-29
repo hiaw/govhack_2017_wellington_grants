@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { compose, withState } from 'recompose'
+import { View } from 'react-native'
 import SQLite from 'react-native-sqlite-storage'
 
 import FundNameList from '../Component/FundNameList.js'
@@ -30,8 +31,11 @@ class FundNameListComponent extends Component {
   }
 
   render() {
-    console.log('rendering fund name list')
-    return <FundNameList results={this.props.result} />
+    return (
+      <View style={{ paddingTop: 20 }}>
+        <FundNameList results={this.props.result} />
+      </View>
+    )
   }
 }
 

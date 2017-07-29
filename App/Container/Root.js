@@ -11,9 +11,7 @@ class RootComponent extends Component {
   }
 
   // DB related
-  successCB() {
-    console.log('DB opened: ')
-  }
+  successCB() {}
 
   errorCB(err) {
     console.log('SQL Error: ' + err)
