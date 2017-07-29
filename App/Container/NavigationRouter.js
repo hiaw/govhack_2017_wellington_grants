@@ -52,7 +52,7 @@ class NavigationRouter extends Component {
               db={this.props.db}
               component={SingleProjectContainer}
             />
-            <Scene key="stats" component={StatisticsPage} />
+            <Scene title="Statistics" key="stats" component={StatisticsPage} />
           </Scene>
         </Router>
       )

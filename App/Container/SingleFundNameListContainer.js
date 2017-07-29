@@ -6,7 +6,7 @@ import SQLite from 'react-native-sqlite-storage'
 import SingleFundNameList from '../Component/SingleFundNameList.js'
 
 const sql_single_funding_total =
-  'select fid, Project_Event_Title as name, Granted_Total_Amount as value from WCC_Grant_Funding_By_Fund where Funding_Pool_Name like ? order by Granted_Total_Amount desc'
+  'select fid, Project_Event_Title as name, Granted_Total_Amount as value from WCC_Grant_Funding_By_Fund where Funding_Pool_Name like ? order by Granted_Total_Amount desc limit 40'
 
 class SingleFundNameListComponent extends Component {
   componentDidMount() {
